@@ -1,12 +1,7 @@
 package com.company.controllers;
 
-import com.company.models.Employee;
-import com.company.services.ICustomerService;
-import com.company.services.IEmployeeService;
-import com.company.services.IFacilityService;
-import com.company.services.impl.CustomerService;
-import com.company.services.impl.EmployeeService;
-import com.company.services.impl.FacilityService;
+import com.company.services.*;
+import com.company.services.impl.*;
 import com.company.utils.MenuUtil;
 
 import java.util.Scanner;
@@ -16,11 +11,15 @@ public class FuramaController {
     private static IEmployeeService iEmployeeService;
     private static ICustomerService iCustomerService;
     private static IFacilityService iFacilityService;
+    private static IBookingService iBookingService;
+    private static IContactService iContactService;
 
     static {
         iEmployeeService = new EmployeeService();
         iCustomerService = new CustomerService();
         iFacilityService = new FacilityService();
+        iBookingService = new BookingService();
+        iContactService = new ContactService();
     }
 
     public static void displayMainMenu() {
@@ -139,16 +138,16 @@ public class FuramaController {
 
             switch (MenuUtil.choose(1, 6)) {
                 case 1:
-                    // TODO
+                    iBookingService.add();
                     break;
                 case 2:
-                    // TODO
+                    iBookingService.display();
                     break;
                 case 3:
-                    // TODO
+                    iContactService.add();
                     break;
                 case 4:
-                    // TODO
+                    iContactService.display();
                     break;
                 case 5:
                     // TODO

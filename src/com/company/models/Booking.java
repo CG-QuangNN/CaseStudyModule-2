@@ -2,7 +2,7 @@ package com.company.models;
 
 import java.time.LocalDate;
 
-public class Booking {
+public class Booking implements Comparable<Booking> {
     /**
      * Mã booking
      */
@@ -24,25 +24,19 @@ public class Booking {
     private String customerId;
 
     /**
-     * Tên dịch vụ
+     * Mã dịch vụ
      */
-    private String serviceName;
-
-    /**
-     * Loại dịch vụ.
-     */
-    private String serviceType;
+    private String facilityId;
 
     public Booking() {
     }
 
-    public Booking(String id, LocalDate startDay, LocalDate endDay, String customerId, String serviceName, String serviceType) {
+    public Booking(String id, LocalDate startDay, LocalDate endDay, String customerId, String facilityId) {
         this.id = id;
         this.startDay = startDay;
         this.endDay = endDay;
         this.customerId = customerId;
-        this.serviceName = serviceName;
-        this.serviceType = serviceType;
+        this.facilityId = facilityId;
     }
 
     public String getId() {
@@ -77,19 +71,37 @@ public class Booking {
         this.customerId = customerId;
     }
 
-    public String getServiceName() {
-        return serviceName;
+    public String getFacilityId() {
+        return facilityId;
     }
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
+    public void setFacilityId(String facilityId) {
+        this.facilityId = facilityId;
     }
 
-    public String getServiceType() {
-        return serviceType;
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "id='" + id + '\'' +
+                ", startDay=" + startDay +
+                ", endDay=" + endDay +
+                ", customerId='" + customerId + '\'' +
+                ", facilityId='" + facilityId + '\'' +
+                '}';
     }
 
-    public void setServiceType(String serviceType) {
-        this.serviceType = serviceType;
+    @Override
+    public int compareTo(Booking o) {
+        int compare = this.startDay.compareTo(o.startDay);
+        if (compare != 0) {
+            return compare;
+        }
+
+        compare = this.endDay.compareTo(o.endDay);
+        if (compare != 0) {
+            return compare;
+        }
+
+        return this.id.compareTo(o.id);
     }
 }

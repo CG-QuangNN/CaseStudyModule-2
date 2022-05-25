@@ -1,10 +1,10 @@
 package com.company.models;
 
-public class Contract {
+public class Contract implements Comparable<Contract> {
     /**
      * Số hợp đồng
      */
-    private int contractNo;
+    private String contractNo;
 
     /**
      * Mã booking
@@ -29,7 +29,7 @@ public class Contract {
     public Contract() {
     }
 
-    public Contract(int contractNo, String bookingId, double advanceDepositAmount, double totalPaymentAmount, String customerId) {
+    public Contract(String contractNo, String bookingId, double advanceDepositAmount, double totalPaymentAmount, String customerId) {
         this.contractNo = contractNo;
         this.bookingId = bookingId;
         this.advanceDepositAmount = advanceDepositAmount;
@@ -37,11 +37,11 @@ public class Contract {
         this.customerId = customerId;
     }
 
-    public int getContractNo() {
+    public String getContractNo() {
         return contractNo;
     }
 
-    public void setContractNo(int contractNo) {
+    public void setContractNo(String contractNo) {
         this.contractNo = contractNo;
     }
 
@@ -75,5 +75,21 @@ public class Contract {
 
     public void setCustomerId(String customerId) {
         this.customerId = customerId;
+    }
+
+    @Override
+    public int compareTo(Contract o) {
+        return this.contractNo.compareTo(o.contractNo);
+    }
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "contractNo='" + contractNo + '\'' +
+                ", bookingId='" + bookingId + '\'' +
+                ", advanceDepositAmount=" + advanceDepositAmount +
+                ", totalPaymentAmount=" + totalPaymentAmount +
+                ", customerId='" + customerId + '\'' +
+                '}';
     }
 }

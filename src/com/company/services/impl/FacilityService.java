@@ -9,21 +9,20 @@ import com.company.utils.MenuUtil;
 
 import java.util.LinkedHashMap;
 import java.util.Scanner;
-import java.util.TreeSet;
 
 public class FacilityService implements IFacilityService {
     private static final Scanner scanner = new Scanner(System.in);
-    private static final LinkedHashMap<Facility, Integer> facilityLinkedHashMap;
+    public static final LinkedHashMap<Facility, Integer> facilityLinkedHashMap;
 
     static {
         facilityLinkedHashMap = new LinkedHashMap<>();
 
-        facilityLinkedHashMap.put(new Villa("Hội An", 60, 10000000, 10, 1, "Cao cấp", 10, 3), 1);
-        facilityLinkedHashMap.put(new Villa("Hội An 2", 100, 15000000, 15, 2, "Cao cấp", 16, 4), 7);
-        facilityLinkedHashMap.put(new House("Đà Nẵng 1", 100, 15000000, 15, 2, "Cao cấp", 4), 6);
-        facilityLinkedHashMap.put(new House("Đà Nẵng 2", 100, 7000000, 6, 3, "Cao cấp", 4), 5);
-        facilityLinkedHashMap.put(new Room("Quảng Trị 1", 100, 7000000, 6, 3, "Ăn cơm buổi sáng"), 5);
-        facilityLinkedHashMap.put(new Room("Quảng Trị 2", 100, 7000000, 6, 3, "Nhậu đêm khuya"), 5);
+        facilityLinkedHashMap.put(new Villa("V001", "Hội An", 60, 10000000, 10, 1, "Cao cấp", 10, 3), 1);
+        facilityLinkedHashMap.put(new Villa("V002", "Hội An 2", 100, 15000000, 15, 2, "Cao cấp", 16, 4), 7);
+        facilityLinkedHashMap.put(new House("H001", "Đà Nẵng 1", 100, 15000000, 15, 2, "Cao cấp", 4), 6);
+        facilityLinkedHashMap.put(new House("H002", "Đà Nẵng 2", 100, 7000000, 6, 3, "Cao cấp", 4), 5);
+        facilityLinkedHashMap.put(new Room("R001", "Quảng Trị 1", 100, 7000000, 6, 3, "Ăn cơm buổi sáng"), 5);
+        facilityLinkedHashMap.put(new Room("R002", "Quảng Trị 2", 100, 7000000, 6, 3, "Nhậu đêm khuya"), 5);
     }
 
     @Override

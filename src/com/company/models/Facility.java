@@ -4,6 +4,11 @@ import com.company.utils.MenuUtil;
 
 public abstract class Facility {
     /**
+     * Mã dịch vụ
+     */
+    private String facilityId;
+
+    /**
      * Tên dịch vụ
      */
     private String name;
@@ -35,12 +40,21 @@ public abstract class Facility {
     public Facility() {
     }
 
-    public Facility(String name, double area, double price, int maxPeople, int rentalType) {
+    public Facility(String facilityId, String name, double area, double price, int maxPeople, int rentalType) {
+        this.facilityId = facilityId;
         this.name = name;
         this.area = area;
         this.price = price;
         this.maxPeople = maxPeople;
         this.rentalType = rentalType;
+    }
+
+    public String getFacilityId() {
+        return facilityId;
+    }
+
+    public void setFacilityId(String facilityId) {
+        this.facilityId = facilityId;
     }
 
     public String getName() {
@@ -85,7 +99,8 @@ public abstract class Facility {
 
     @Override
     public String toString() {
-        return "name='" + name + '\'' +
+        return "facilityId='" + facilityId + '\'' +
+                ", name='" + name + '\'' +
                 ", area=" + area +
                 ", price=" + price +
                 ", maxPeople=" + maxPeople +

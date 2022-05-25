@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CustomerService implements ICustomerService {
-    private static final List<Customer> customerList = new LinkedList<>();
+    public static final List<Customer> customerList = new LinkedList<>();
     private static final Scanner scanner = new Scanner(System.in);
 
     static {
