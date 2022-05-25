@@ -22,6 +22,9 @@ public class BookingService implements IBookingService {
         bookingTreeSet.add(new Booking("B002", LocalDate.parse("2021-01-02"), LocalDate.parse("2021-03-04"), "C002", "V002"));
         bookingTreeSet.add(new Booking("B003", LocalDate.parse("2021-01-02"), LocalDate.parse("2021-03-01"), "C002", "V002"));
         bookingTreeSet.add(new Booking("B004", LocalDate.parse("2021-01-02"), LocalDate.parse("2021-03-02"), "C002", "V002"));
+        bookingTreeSet.add(new Booking("B005", LocalDate.now(), LocalDate.now().plusMonths(1), "C002", "V002"));
+        bookingTreeSet.add(new Booking("B006", LocalDate.now().plusDays(1), LocalDate.now().plusMonths(1), "C001", "V002"));
+        bookingTreeSet.add(new Booking("B007", LocalDate.now().plusDays(2), LocalDate.now().plusMonths(1), "C003", "V002"));
     }
 
     @Override

@@ -16,6 +16,7 @@ public class CustomerService implements ICustomerService {
     static {
         customerList.add(new Customer("C001", "Nguyễn Văn A", LocalDate.parse("1996-01-01"), 1, "0123456879", "(+84)123456798", "nguyenvana@gmail.com", 1, "Đà Nẵng"));
         customerList.add(new Customer("C002", "Nguyễn Văn B", LocalDate.parse("1997-06-07"), 2, "0123456879", "(+84)123456798", "nguyenvanb@gmail.com", 1, "Quảng Bình"));
+        customerList.add(new Customer("C003", "Nguyễn Văn c", LocalDate.parse("1994-06-07"), 2, "0123456879", "(+84)123456798", "nguyenvanb@gmail.com", 1, "Quảng Bình"));
     }
 
     @Override

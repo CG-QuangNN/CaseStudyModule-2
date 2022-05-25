@@ -13,6 +13,7 @@ public class FuramaController {
     private static IFacilityService iFacilityService;
     private static IBookingService iBookingService;
     private static IContactService iContactService;
+    private static IPromotionService iPromotionService;
 
     static {
         iEmployeeService = new EmployeeService();
@@ -20,6 +21,7 @@ public class FuramaController {
         iFacilityService = new FacilityService();
         iBookingService = new BookingService();
         iContactService = new ContactService();
+        iPromotionService = new PromotionService();
     }
 
     public static void displayMainMenu() {
@@ -167,10 +169,10 @@ public class FuramaController {
 
             switch (MenuUtil.choose(1, 3)) {
                 case 1:
-                    // TODO
+                    iPromotionService.displayCustomersUseService();
                     break;
                 case 2:
-                    // TODO
+                    iPromotionService.displayCustomersGetVoucher();
                     break;
                 case 3:
                     return;
