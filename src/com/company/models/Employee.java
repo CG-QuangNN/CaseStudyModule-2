@@ -2,6 +2,7 @@ package com.company.models;
 
 import com.company.utils.MenuUtil;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Employee extends Person {
@@ -23,6 +24,20 @@ public class Employee extends Person {
      * Lương
      */
     private double salary;
+
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s"
+                , super.getId()
+                , super.getFullName()
+                , super.getDateOfBirth()
+                , super.getGender()
+                , super.getIdCard()
+                , super.getPhoneNumber()
+                , super.getEmail()
+                , this.getLevel()
+                , this.getPosition()
+                , new BigDecimal(this.getSalary()));
+    }
 
     public Employee() {
     }

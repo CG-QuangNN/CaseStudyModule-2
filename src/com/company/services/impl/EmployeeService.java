@@ -3,25 +3,20 @@ package com.company.services.impl;
 import com.company.models.Employee;
 import com.company.services.IEmployeeService;
 import com.company.utils.MenuUtil;
+import com.company.utils.ReadWriteFileUtil;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeService implements IEmployeeService {
-    private static List<Employee> employeeList;
-    private static Scanner scanner = new Scanner(System.in);
-
-    static {
-        employeeList = new ArrayList<>();
-
-        employeeList.add(new Employee("E001", "Nguyễn Ngọc Quang", LocalDate.parse("1995-03-12"), 1, "123456789", "(+84)123456789", "ngocquang@gmailcom", 1, "Giám đốc", 15000000));
-        employeeList.add(new Employee("E002", "Nguyễn Văn B", LocalDate.parse("1995-03-12"), 1, "123456789", "(+84)123456789", "nguyenvanb@gmailcom", 1, "Nhân viên", 7000000));
-    }
+    private final String PATH_EMPLOYEE = "src/com/company/data/employee.csv";
+    private static final Scanner scanner = new Scanner(System.in);
 
     @Override
     public void edit() {
+        List<Employee> employeeList = ReadWriteFileUtil.readEmployeeFile(PATH_EMPLOYEE);
+
         System.out.println("Nhập vào mã nhân viên: ");
         String id = scanner.nextLine();
 
@@ -66,6 +61,8 @@ public class EmployeeService implements IEmployeeService {
 
                 employeeList.set(i, employee);
 
+                ReadWriteFileUtil.writeEmployeeFile(PATH_EMPLOYEE, employeeList);
+
                 System.out.println("Đã chỉnh sửa thành công!!!");
                 existEmployee = true;
                 break;
@@ -79,6 +76,7 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void add() {
+        List<Employee> employeeList = ReadWriteFileUtil.readEmployeeFile(PATH_EMPLOYEE);
         System.out.println("Nhập vào mã nhân viên: ");
         String id = scanner.nextLine();
 
@@ -129,12 +127,14 @@ public class EmployeeService implements IEmployeeService {
             Employee employee = new Employee(id, fullName, dateOfBirth, gender, idCard, phoneNumber, email, level, position, salary);
 
             employeeList.add(employee);
+            ReadWriteFileUtil.writeEmployeeFile(PATH_EMPLOYEE, employeeList);
             System.out.println("Đã thêm thành công!!!");
         }
     }
 
     @Override
     public void display() {
+        List<Employee> employeeList = ReadWriteFileUtil.readEmployeeFile(PATH_EMPLOYEE);
         for (Employee employee : employeeList) {
             System.out.println(employee);
         }

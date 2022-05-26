@@ -19,6 +19,11 @@ public class Villa extends Facility {
     public Villa() {
     }
 
+    @Override
+    public String getInfo() {
+        return null;
+    }
+
     public Villa(String facilityId, String name, double area, double price, int maxPeople, int rentalType, String roomStandard, double poolArea, int numberFloors) {
         super(facilityId, name, area, price, maxPeople, rentalType);
         this.roomStandard = roomStandard;

@@ -9,6 +9,11 @@ public class Room extends Facility {
     public Room() {
     }
 
+    @Override
+    public String getInfo() {
+        return null;
+    }
+
     public Room(String facilityId, String name, double area, double price, int maxPeople, int rentalType, String freeService) {
         super(facilityId, name, area, price, maxPeople, rentalType);
         this.freeService = freeService;

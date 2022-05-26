@@ -1,5 +1,6 @@
 package com.company.services.impl;
 
+import com.company.exception.InvalidIdVillaException;
 import com.company.models.Facility;
 import com.company.models.House;
 import com.company.models.Room;
@@ -114,6 +115,27 @@ public class FacilityService implements IFacilityService {
     }
 
     private void inputFacility(Facility facility) {
+        String id;
+        if (facility instanceof Villa) {
+            boolean isValidId;
+            do {
+                isValidId = true;
+                System.out.print("Nhập vào mã: ");
+                id = scanner.nextLine();
+                try {
+                    if (!id.matches("SVVL-[0-9]{4}")) {
+                        throw new InvalidIdVillaException("Mã dịch vụ Vila không hợp lệ (SVVL-YYYY với Y là số từ 0-9), xin kiểm tra lại!!!");
+                    }
+                } catch (InvalidIdVillaException e) {
+                    System.out.println(e.getMessage());
+                    isValidId = false;
+                }
+            } while (!isValidId);
+        } else {
+            System.out.print("Nhập vào mã dịch vụ: ");
+            id = scanner.nextLine();
+        }
+
         System.out.print("Nhập vào tên dịch vụ: ");
         String name = scanner.nextLine();
 
@@ -133,6 +155,7 @@ public class FacilityService implements IFacilityService {
         System.out.println("4 - thuê theo giờ");
         int rentalType = MenuUtil.choose(1, 4);
 
+        facility.setFacilityId(id);
         facility.setName(name);
         facility.setArea(area);
         facility.setPrice(price);

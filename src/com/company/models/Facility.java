@@ -37,6 +37,8 @@ public abstract class Facility {
      */
     private int rentalType;
 
+    public abstract String getInfo();
+
     public Facility() {
     }
 
